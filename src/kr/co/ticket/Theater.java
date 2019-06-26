@@ -11,15 +11,7 @@ public class Theater {
     public void enter(Audience audience) {
         System.out.println("is start : " + audience.getBag().hasTicket());
 
-        if(audience.getBag().hasInvitation()) {
-            Ticket ticket = ticketSeller.getTicketOffice().getTickets();
-            audience.getBag().setTicket(ticket);
-        }else {
-            Ticket ticket = ticketSeller.getTicketOffice().getTickets();
-            audience.getBag().minusAmount(ticket.getFee());
-            ticketSeller.getTicketOffice().plusAmount(ticket.getFee());
-            audience.getBag().setTicket(ticket);
-        }
+        ticketSeller.sellTo(audience);
 
         System.out.println("is end : " + audience.getBag().hasTicket());
     }
